@@ -1,0 +1,83 @@
+---
+title: "Seedminer"
+---
+
+{% include toc title="條目內容" %}
+
+Seedminer-based methods have been replaced by easier, safer methods. Please return to [Get Started](get-started) unless you have a legitimate reason to follow this page (such as broken shoulder buttons).
+{: .notice--warning}
+
+### 必讀事項
+
+To install boot9strap on your device, we derive your device's unique encryption key.
+
+為達成這點，我們將透過一項稱為 Seedminer 的工具來計算您裝置中所持有的 DSiWare 加密金鑰 (`movable.sed`)。 我們將透過此 DSiWare 加密金鑰解密任一相容的 DSiWare 以植入一項安全性漏洞好讓我們執行任何想要的程式 (漏洞種類視您的主機區域而定)。
+
+假如該金鑰是亂數產生的，以現在的電腦技術而言將無法破解該加密金鑰。 好消息是該金鑰的前半段 (`movable_part1.sed`) 其實跟您裝置的好友代碼是有相關性的。透過這點，我們將能破解該金鑰。 如果想知道 Seedminer 怎麼運作的，請見該[投影片](https://zoogie.github.io/web/34⅕c3)。
+
+This method uses a powerful graphics card to perform the calculations needed. A volunteer-run website is used for the purpose of assisting you with this method.
+
+### 操作說明
+
+#### 第一節 — 準備工作
+
+1. 將 SD 卡插入至電腦中
+1. 移動至 SD 卡的 `Nintendo 3DS` 資料夾中
+1. Copy the 32 character long name of the folder you see inside Nintendo 3DS
+  + Do not go inside any more folders
+  + If you see multiple folders with long, random names inside `Nintendo 3DS` without opening any other folders, perform the following:
+  + 將 `Nintendo 3DS` 資料夾重新命名為 `BACKUP_Nintendo 3DS`
+  + 將您的 SD 卡插回至您的裝置中並開機
+  + 等待您的裝置生成 SD 卡中的資料
+  + 關機並將 SD 卡插回電腦中
+  + 移動至 SD 卡的 `Nintendo 3DS` 資料夾中
+  + 複製含有 32 字元的資料夾的名稱
+  + 刪除 `Nintendo 3DS` 資料夾
+  + 將 `BACKUP_Nintendo 3DS` 資料夾重新命名為 `Nintendo 3DS`
+1. 將該 32 字元字串複製至記事本中；等一下會用到它
+  + 這個資料夾名稱也就是我們所謂的『ID0』
+1. 啟動您的主機
+1. 開啟您的好友清單 (HOME 主選單中最上方的[橘色笑臉圖示]({{ "/images/friend-list-icon.png" | absolute_url }}))
+  + If you receive an error and are kicked out of the menu, you either must create a new Mii or your device cannot connect to Nintendo's servers (due to a ban or connection issues)
+1. 選擇您的 Mii 個人檔案，並找尋您的好友代碼
+
+#### Section II - Seedminer
+
+1. Open [Bruteforce Movable](https://seedminer.hacks.guide/) on your computer
+  + 此網站可自動替您取得 `movable_part1.sed` (透過一台機器操控的 3DS 主機)，並破解您裝置的 DSiWare 加密金鑰 (透過某自願者的電腦運行 Seedminer)
+  + If the site isn't working, join [Nintendo Homebrew on Discord](https://discord.gg/MWxPgEp) and ask (in English) for someone there to assist you
+1. 輸入您裝置的好友代碼 (勿含空白或減號) 至『Your friend code (您的好友代碼)』欄位中
+1. 輸入您主機的 32 字元辨識碼 (剛請您複製至記事本中的號碼) 至『Your ID0』欄位中
+  + Do not attempt to enter the ID0 by hand. Ensure the ID0 is entered correctly by copying and pasting it from where you saved it in the previous section
+1. 選擇『Go』
+  + If the site immediately goes to step 4, download your `movable.sed` file and continue with the next section
+1. 如提示時，在您的主機中的『好友註冊 (Register Friend)』添加機器人 3DS 的好友代碼
+1. 等待網站更新
+  + 如果遲遲尚未更新，請在刷新頁面前等待個幾分鐘
+1. 一旦網站開始處理您裝置的相關訊息，您將可以選擇『Continue (繼續)』或『Do another device (破解其他裝置)』。 點擊綠色的『Continue (繼續)』按鈕
+1. 等待執行剩下的程序
+  + This is usually fast (1-5 minutes) but in some cases, can take up to half an hour
+  + During this process, the bot you added may not show up on your 3DS. As long as the website updates, this is not an issue
+  + 若您等了半小時遲遲沒有結果，那麼請加入[Nintendo Homebrew Discord 伺服器](https://discord.gg/MWxPgEp)使用英文來請求幫助
+1. 當該程序結束時下載您的 `movable.sed` 檔案
+  + 您在待會還會用到該檔案，請先將其保留
+
+___
+
+#### PicHaxx + universal-otherapp (Recommended)
+
+This method of using Seedminer for further exploitation uses your `movable.sed` file to write a custom save file for Pokémon Picross, which can then be used in conjunction with universal-otherapp to install custom firmware.
+
+This route requires the Pokémon Picross application (free on eShop), and thus requires eShop access and a 3DS with a region of USA, EUR, or JPN.
+
+Continue to [Installing boot9strap (PicHaxx)](installing-boot9strap-(pichaxx))
+{: .notice--primary}
+
+#### BannerBomb3 + Fredtool
+
+This method of using Seedminer for further exploitation uses your `movable.sed` file to create a custom DSiWare backup that exploits the system to dump system DSiWare.
+
+This route is only recommended if you are for some reason unable to follow the PicHaxx + universal-otherapp route.
+
+Continue to [BannerBomb3](bannerbomb3)
+{: .notice--warning}
